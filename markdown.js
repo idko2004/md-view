@@ -195,6 +195,8 @@ function searchForImages(line)
 
 	console.log('--image', {altText, url, indexes:{'[': leftBracket, ']': rightBracket, '(': leftParenthesis, ')': rightParenthesis}});
 
+	closeLastTitleContainer();
+
 	const img = document.createElement('img');
 	img.setAttribute('src', url);
 	img.setAttribute('alt', altText);
@@ -248,6 +250,8 @@ function searchForComments(line)
 		container.classList.add('comment-container');
 		viewer.appendChild(container);
 	}
+
+	closeLastTitleContainer();
 
 	const comment = document.createElement('p');
 	comment.classList.add('comment');
@@ -336,6 +340,12 @@ function getLastTitleContainer()
 	lastTitleContainer[lastTitleContainer.length] = section;
 	console.log('--Title container por defecto creado--', section);
 	return section;
+}
+
+//Dejar de usar el lastTitleContainer en caso de que haya otro elemento que quiera tener un container, como un comentario o una imagen
+function closeLastTitleContainer()
+{
+	lastTitleContainer = [];
 }
 
 
