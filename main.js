@@ -52,3 +52,4 @@ dropzone.addEventListener('dragleave', (e) =>
 });
 
 document.getElementById('dialog').showModal();
+msg.innerText = "You just closed the thing, reload the page";
