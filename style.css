@@ -96,12 +96,14 @@ header button img
 	width: 2rem;
 }
 
-header .header-menu-font
+header .header-menu-font,
+#settingsMenu,
+#documentSettingsMenu
 {
 	padding: 1rem 0;
 }
 
-header .header-menu-font button
+.fontlist button
 {
 	background-color: transparent;
 	border: 0;
@@ -125,6 +127,12 @@ header .header-menu-font button
 .bigSquareButton img
 {
 	height: 4rem;
+}
+
+input[type="Number"]
+{
+	width: 6ch;
+	text-align: right;
 }
 
 .viewer

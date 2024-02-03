@@ -1,6 +1,6 @@
 const settingsMenu = document.getElementById('settingsMenu');
 
-function showSetings(show)
+function showSettings(show)
 {
 	settingsMenu.hidden = !show;
 }
@@ -13,7 +13,7 @@ document.getElementById('changeFontBtn').addEventListener('click', () =>
 	const menu = document.getElementById('changeFontMenu');
 	menu.hidden = !menu.hidden;
 
-	showSetings(false);
+	showSettings(false);
 });
 
 let docfontbtn = document.getElementsByClassName('docfontbtn');
@@ -27,9 +27,6 @@ for(let i = 0; i < docfontbtn.length; i++)
 		const font = event.target.getAttribute('ftn')
 		setDocumentFont(font);
 
-		const menu = document.getElementById('changeFontMenu');
-		menu.hidden = !menu.hidden;
-
 		localStorage.setItem('docfont', font);
 	});
 }
@@ -40,9 +37,6 @@ for(let i = 0; i < codefontbtn.length; i++)
 	{
 		const font = event.target.getAttribute('ftn')
 		setCodeFont(font);
-
-		const menu = document.getElementById('changeFontMenu');
-		menu.hidden = !menu.hidden;
 
 		localStorage.setItem('codefont', font);
 	});
@@ -79,3 +73,13 @@ function setCodeFont(font)
 
 	console.log('Code font set', fontName);
 }
+
+//
+//	DOCUMENT SETTINGS
+//
+
+document.getElementById('documentSettingsBtn').addEventListener('click', () =>
+{
+	document.getElementById('documentSettingsMenu').hidden = false;
+	showSettings(false);
+});

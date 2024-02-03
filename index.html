@@ -30,7 +30,7 @@
 	<header>
 		<div class="header">
 			<div class="header-btn">
-				<button id="settingsBtn">
+				<button id="settingsBtn" onclick="showSettings(true);">
 					<img src="img/settings-svgrepo-com.svg" alt="Settings" title="Settings">
 				</button>
 				<button id="printBtn">
@@ -39,7 +39,7 @@
 			</div>
 			<div id="settingsMenu" hidden>
 				<div class="align-right">
-					<button>
+					<button onclick="showSettings(false);">
 						<img src="img/close-clean-svgrepo-com.svg" alt="Close" title="Close">
 					</button>
 				</div>
@@ -50,7 +50,7 @@
 						<br>
 						Change font
 					</button>
-					<button class="bigSquareButton">
+					<button class="bigSquareButton" id="documentSettingsBtn">
 						<img src="img/file-create-svgrepo-com.svg">
 						<br>
 						Document settings
@@ -58,11 +58,19 @@
 				</div>
 			</div>
 			<div class="header-menu-font" id="changeFontMenu" hidden>
+				<div class="align-right">
+					<button onclick="showSettings(true); document.getElementById('changeFontMenu').hidden = true;">
+						<img src="img/chevron-left-large-svgrepo-com.svg" alt="Back" title="Go back">
+					</button>
+					<button onclick="showSettings(false); document.getElementById('changeFontMenu').hidden = true;">
+						<img src="img/close-clean-svgrepo-com.svg" alt="Close" title="Close">
+					</button>
+				</div>
 				<h1>Change font</h1>
 				<div class="grid">
 					<div>
 						<h3>Document font</h3>
-						<div>
+						<div class="fontlist">
 							<div><button class="docfontbtn" ftn="default">Your system serif font</button></div>
 							<div><button class="docfontbtn" ftn="IBM Plex Serif">IBM Plex Serif</button></div>
 							<div><button class="docfontbtn" ftn="IBM Plex Sans">IBM Plex Sans</button></div>
@@ -77,7 +85,7 @@
 					</div>
 					<div>
 						<h3>Code snippets font</h3>
-						<div>
+						<div class="fontlist">
 							<div><button class="codefontbtn" ftn="default">Your system monospace font</button></div>
 							<div><button class="codefontbtn" ftn="IBM Plex Mono">IBM Plex Mono</button></div>
 							<div><button class="codefontbtn" ftn="Space Mono">Space Mono</button></div>
@@ -88,6 +96,36 @@
 							<div><button class="codefontbtn" ftn="IBM Plex Sans">IBM Plex Sans</button></div>
 							<div><button class="codefontbtn" ftn="Ubuntu">Ubuntu</button></div>
 							<div><button class="codefontbtn" ftn="Inter">Inter</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="documentSettingsMenu" hidden>
+				<div class="align-right">
+					<button onclick="showSettings(true); document.getElementById('documentSettingsMenu').hidden = true;">
+						<img src="img/chevron-left-large-svgrepo-com.svg" alt="Back" title="Go back">
+					</button>
+					<button onclick="showSettings(false); document.getElementById('documentSettingsMenu').hidden = true;">
+						<img src="img/close-clean-svgrepo-com.svg" alt="Close" title="Close">
+					</button>
+				</div>
+				<h1>Document settings</h1>
+				<div class="align-center">
+					<div>
+						<h3>Text indent</h3>
+						<form>
+							<input type="radio" name="docTextIndent" id="docTextIndent-No" value="No">
+							<label for="docTextIndent-No">No</label>
+							<input type="radio" name="docTextIndent" id="docTextIndent-Some" value="Some">
+							<label for="docTextIndent-Some">Some</label>
+							<input type="radio" name="docTextIndent" id="docTextIndent-Custom" value="Custom">
+							<label for="docTextIndent-Custom">Custom</label>
+						</form>
+						<div>
+							<h4>Custom text indent</h4>
+							<div>
+								<input type="Number" value="10"> px
+							</div>
 						</div>
 					</div>
 				</div>
