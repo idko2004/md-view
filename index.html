@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Markdown reader</title>
+
+	<link rel="stylesheet" href="fonts.css">
+	<link rel="stylesheet" href="style.css">
+
+	<script defer src="markdown.js"></script>
+	<script defer src="fonts.js"></script>
+	<script defer src="main.js"></script>
+</head>
+<body>
+	<div class="filechooser-container">
+		<dialog id="dialog">
+			<p><b>Markdown viewer</b></p>
+			<div>
+				<div id="dropzone">
+					<i>Drop a file here</i>
+				</div>
+			</div>
+			<div>
+				or search for a file in your system
+			</div>
+			<input id="filechooser" type="file" accept=".md,.txt" autocomplete="off">
+		</dialog>
+	</div>
+	<header>
+		<div class="header">
+			<div class="header-btn">
+				<button id="changeFontBtn">
+					<img src="img/text-heading-svgrepo-com.svg" alt="Change font" title="Change font">
+				</button>
+			</div>
+			<div class="header-menu-font" id="changeFontMenu" hidden>
+				<h1>Change font</h1>
+				<div class="grid">
+					<div>
+						<h3>Document font</h3>
+						<div>
+							<div><button class="docfontbtn" ftn="default">Your system serif font</button></div>
+							<div><button class="docfontbtn" ftn="IBM Plex Serif">IBM Plex Serif</button></div>
+							<div><button class="docfontbtn" ftn="IBM Plex Sans">IBM Plex Sans</button></div>
+							<div><button class="docfontbtn" ftn="Ubuntu">Ubuntu</button></div>
+							<div><button class="docfontbtn" ftn="Inter">Inter</button></div>
+							<small><b>Monospaced fonts</b></small>
+							<div><button class="docfontbtn" ftn="IBM Plex Mono">IBM Plex Mono</button></div>
+							<div><button class="docfontbtn" ftn="Space Mono">Space Mono</button></div>
+							<div><button class="docfontbtn" ftn="Ubuntu Mono">Ubuntu Mono</button></div>
+							<div><button class="docfontbtn" ftn="JetBrains Mono">JetBrainsMono</button></div>
+						</div>
+					</div>
+					<div>
+						<h3>Code snippets font</h3>
+						<div>
+							<div><button class="codefontbtn" ftn="default">Your system monospace font</button></div>
+							<div><button class="codefontbtn" ftn="IBM Plex Mono">IBM Plex Mono</button></div>
+							<div><button class="codefontbtn" ftn="Space Mono">Space Mono</button></div>
+							<div><button class="codefontbtn" ftn="Ubuntu Mono">Ubuntu Mono</button></div>
+							<div><button class="codefontbtn" ftn="JetBrains Mono">JetBrainsMono</button></div>
+							<small><b>Non-monospaced fonts</b></small>
+							<div><button class="codefontbtn" ftn="IBM Plex Serif">IBM Plex Serif</button></div>
+							<div><button class="codefontbtn" ftn="IBM Plex Sans">IBM Plex Sans</button></div>
+							<div><button class="codefontbtn" ftn="Ubuntu">Ubuntu</button></div>
+							<div><button class="codefontbtn" ftn="Inter">Inter</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<h1 id="msg">You just closed the thing, reload the page</h1>
+	<div class="viewer" id="viewer">
+	</div>
+</body>
+</html>
