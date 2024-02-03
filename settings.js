@@ -1,12 +1,25 @@
+const settingsMenu = document.getElementById('settingsMenu');
+
+function showSetings(show)
+{
+	settingsMenu.hidden = !show;
+}
+
+//
+//	CHANGE FONT
+//
 document.getElementById('changeFontBtn').addEventListener('click', () =>
 {
 	const menu = document.getElementById('changeFontMenu');
 	menu.hidden = !menu.hidden;
+
+	showSetings(false);
 });
 
 let docfontbtn = document.getElementsByClassName('docfontbtn');
 let codefontbtn = document.getElementsByClassName('codefontbtn');
 
+//Añadir events listeners a los botones para elegir las fuentes
 for(let i = 0; i < docfontbtn.length; i++)
 {
 	docfontbtn[i].addEventListener('click', (event) =>
@@ -35,6 +48,7 @@ for(let i = 0; i < codefontbtn.length; i++)
 	});
 }
 
+//cargar fuente automáticamente
 setDocumentFont(localStorage.getItem('docfont'));
 setCodeFont(localStorage.getItem('codefont'));
 

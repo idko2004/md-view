@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="style.css">
 
 	<script defer src="markdown.js"></script>
-	<script defer src="fonts.js"></script>
+	<script defer src="settings.js"></script>
 	<script defer src="print.js"></script>
 	<script defer src="main.js"></script>
 </head>
@@ -30,12 +30,32 @@
 	<header>
 		<div class="header">
 			<div class="header-btn">
-				<button id="changeFontBtn">
-					<img src="img/text-heading-svgrepo-com.svg" alt="Change font" title="Change font">
+				<button id="settingsBtn">
+					<img src="img/settings-svgrepo-com.svg" alt="Settings" title="Settings">
 				</button>
 				<button id="printBtn">
 					<img src="img/print-svgrepo-com.svg" alt="Print" title="Print">
 				</button>
+			</div>
+			<div id="settingsMenu" hidden>
+				<div class="align-right">
+					<button>
+						<img src="img/close-clean-svgrepo-com.svg" alt="Close" title="Close">
+					</button>
+				</div>
+				<h1>Settings</h1>
+				<div class="align-center">
+					<button class="bigSquareButton" id="changeFontBtn">
+						<img src="img/text-heading-svgrepo-com.svg">
+						<br>
+						Change font
+					</button>
+					<button class="bigSquareButton">
+						<img src="img/file-create-svgrepo-com.svg">
+						<br>
+						Document settings
+					</button>
+				</div>
 			</div>
 			<div class="header-menu-font" id="changeFontMenu" hidden>
 				<h1>Change font</h1>

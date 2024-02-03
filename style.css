@@ -117,6 +117,16 @@ header .header-menu-font button
 	grid-template-rows: auto;
 }
 
+.bigSquareButton
+{
+	margin: 1ch;
+}
+
+.bigSquareButton img
+{
+	height: 4rem;
+}
+
 .viewer
 {
 	max-width: 80ch;
@@ -221,4 +231,14 @@ li
 	padding-left: 0.5em;
 
 	color: #77767b;
+}
+
+.align-center
+{
+	text-align: center;
+}
+
+.align-right
+{
+	text-align: right;
 }
