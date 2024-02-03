@@ -14,6 +14,8 @@ const lastTextNode =
 	type: textNodeTypes.normal
 }
 
+let lastTitleContainer = [];//A cada título creamos un contenedor para el contenido de ese título con la esperanza de que así salga mejor al imprimir
+
 let margin = 0;
 
 function startMarkdownizing(file)
@@ -132,8 +134,12 @@ function searchForTitles(line)
 
 	line = line.slice(i + 1);
 
-	lastTextNode.e = addToDocument(`h${i}`, line);
+	const title = addToDocument(`h${i}`, line);
+
+	lastTextNode.e = title;
 	lastTextNode.type = textNodeTypes.title;
+
+	setNewTitleContainer(title, i);
 }
 
 function searchForCodeblocks()
@@ -271,10 +277,65 @@ function addToDocument(element, content)
 {
 	const e = document.createElement(element);
 	e.classList.add('txt');
+	
 	if(content) e.innerText = content;
+	
 	if(margin > 0) e.style.marginLeft = `${margin*2}em`;
-	viewer.appendChild(e);
+	
+	//Si son un título ignorar title container ya que debería hacerse justo después de esto
+	if(element.startsWith('h')) viewer.appendChild(e);
+	else getLastTitleContainer().appendChild(e);
+
 	return e;
+}
+
+function setNewTitleContainer(titleElement, hLevel)
+{
+	const section = document.createElement('div');
+	section.classList.add('titleContainer');
+	viewer.appendChild(section);
+
+	titleElement.before(section);
+	section.appendChild(titleElement);
+
+	hLevel--;
+	lastTitleContainer[hLevel] = section;
+
+	//Eliminar todos los títulos que son más pequeños que este
+	//Por ejemplo: si había un h3 y se añade un h4, el h4 va a estar "adentro" del h3
+	//Pero si había un h3 y se añade un h2, dejar de seguir a los títulos inferiores a este.
+	for(let i = hLevel + 1; i < lastTitleContainer.length; i++)
+	{
+		lastTitleContainer[i] = undefined;
+	}
+
+	//Hacerle hijo de su título superior, si es que hay
+	if(lastTitleContainer[hLevel - 1] !== undefined)
+	{
+		lastTitleContainer[hLevel - 1].appendChild(section);
+	}
+
+	console.log(`--Title container de nivel ${hLevel} creado--`, titleElement, section);
+}
+
+function getLastTitleContainer()
+{
+	for(let i = lastTitleContainer.length - 1; i >= 0; i--)
+	{
+		if(lastTitleContainer[i] !== undefined)
+		{
+			console.log('lastTitleContainer', lastTitleContainer[i]);
+			return lastTitleContainer[i];
+		}
+	}
+
+	//Si no hay ningún title container
+	const section = document.createElement('div');
+	section.classList.add('titleContainer');
+	viewer.appendChild(section);
+	lastTitleContainer[lastTitleContainer.length] = section;
+	console.log('--Title container por defecto creado--', section);
+	return section;
 }
 
 
