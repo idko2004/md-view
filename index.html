@@ -114,17 +114,34 @@
 					<div>
 						<h3>Text indent</h3>
 						<form>
-							<input type="radio" name="docTextIndent" id="docTextIndent-No" value="No">
+							<input type="radio" name="docTextIndent" id="docTextIndent-No" value="No" autocomplete="off" onclick="setTextIndentSetting(0)">
 							<label for="docTextIndent-No">No</label>
-							<input type="radio" name="docTextIndent" id="docTextIndent-Some" value="Some">
+							<input type="radio" name="docTextIndent" id="docTextIndent-Some" value="Some" autocomplete="off" onclick="setTextIndentSetting(1)">
 							<label for="docTextIndent-Some">Some</label>
-							<input type="radio" name="docTextIndent" id="docTextIndent-Custom" value="Custom">
+							<input type="radio" name="docTextIndent" id="docTextIndent-Custom" value="Custom" autocomplete="off" onclick="setTextIndentSetting(2)">
 							<label for="docTextIndent-Custom">Custom</label>
 						</form>
-						<div>
+						<div id="docCustomIndentContainer">
 							<h4>Custom text indent</h4>
 							<div>
-								<input type="Number" value="10"> px
+								<input type="Number" id="docCustomIndent" value="10" autocomplete="off" onchange="setCustomTextIndentSetting()">
+								<label for="docCustomIndent">px</label>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h3>Font size</h3>
+						<form>
+							<input type="radio" name="docFontSize" id="docFontSize-Default" autocomplete="off" onclick="setFontSizeSetting(0)">
+							<label for="docFontSize-Default">Default</label>
+							<input type="radio" name="docFontSize" id="docFontSize-Custom" autocomplete="off" onclick="setFontSizeSetting(1)">
+							<label for="docFontSize-Custom">Custom</label>
+						</form>
+						<div id="docCustomFontSizeContainer">
+							<h4>Custom font size</h4>
+							<div>
+								<input type="Number" id="docCustomFontSize" autocomplete="off" value="14" onchange="setCustomFontSizeSetting()">
+								<label for="docCustomFontSize">px</label>
 							</div>
 						</div>
 					</div>
@@ -133,7 +150,6 @@
 		</div>
 	</header>
 	<h1 id="msg">Did you disabled Javascript, or is your internet really that slow?</h1>
-	<div class="viewer" id="viewer">
-	</div>
+	<div class="viewer" id="viewer"></div>
 </body>
 </html>

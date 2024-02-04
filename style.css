@@ -135,6 +135,11 @@ input[type="Number"]
 	text-align: right;
 }
 
+input[type="radio"]:hover
+{
+	cursor: pointer;
+}
+
 .viewer
 {
 	max-width: 80ch;
