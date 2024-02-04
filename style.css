@@ -4,10 +4,8 @@ html
 	
 	--document-font: serif;
 	--code-font: monospace;
-	/*
-	--document-font: 'IBM Plex Serif';
-	--code-font: 'IBM Plex Mono';
-	*/
+	--font-size: 1rem;
+	--indent: 20px;
 }
 
 body
@@ -155,6 +153,12 @@ input[type="radio"]:hover
 {
 	break-inside: avoid;
 	page-break-inside: avoid;
+}
+
+.viewer p
+{
+	font-size: var(--font-size);
+	text-indent: var(--indent);
 }
 
 .codeblock
