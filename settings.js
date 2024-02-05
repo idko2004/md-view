@@ -16,7 +16,8 @@ function loadSavedSettings()
 		textIndent: localStorage.getItem('indent'),
 		fontSize: localStorage.getItem('size'),
 		customTextIndent: localStorage.getItem('indent-custom'),
-		customFontSize: localStorage.getItem('size-custom')
+		customFontSize: localStorage.getItem('size-custom'),
+		align: localStorage.getItem('align')
 	}
 
 	return settingsState;
@@ -30,6 +31,7 @@ function saveSettings()
 	localStorage.setItem('size', settingsState.fontSize);
 	localStorage.setItem('indent-custom', settingsState.customTextIndent);
 	localStorage.setItem('size-custom', settingsState.customFontSize);
+	localStorage.setItem('align', settingsState.align);
 }
 
 //cargar cosas automáticamente
@@ -37,6 +39,7 @@ setDocumentFont(loadSavedSettings().docfont);
 setCodeFont(loadSavedSettings().codefont);
 setTextIndentBySavedSetting();
 setFontSizeBySavedSetting();
+setTextAlignBySavedSetting();
 
 //
 //	CHANGE FONT
@@ -182,7 +185,7 @@ function setTextIndentBySavedSetting()
 	{
 		default:
 		case "0": actuallySetTextIndent(null); break;
-		case "1": actuallySetTextIndent(20); break;
+		case "1": actuallySetTextIndent(25); break;
 		case "2": actuallySetTextIndent(loadSavedSettings().customTextIndent); break;
 	}
 }
@@ -259,6 +262,41 @@ function actuallySetFontSize(value)
 	console.log('Font size set', value);
 }
 
+function setTextAlignSetting(state)
+{
+	const settings = loadSavedSettings();
+
+	settings.align = state.toString();
+
+	saveSettings();
+	setTextAlignBySavedSetting();
+	updateDocumentSettingsMenu();
+}
+
+function setTextAlignBySavedSetting()
+{
+	switch(loadSavedSettings().align)
+	{
+		default:
+		case "0": actuallySetTextAlign('left'); break;
+		case "1": actuallySetTextAlign('center'); break;
+		case "2": actuallySetTextAlign('right'); break;
+		case "3": actuallySetTextAlign('justify'); break;
+	}
+}
+
+function actuallySetTextAlign(value)
+{
+	const root = document.getElementsByTagName("html")[0];
+
+	if(value === null) return;
+
+	root.style.setProperty('text-align', value);
+
+	console.log('Text align set', value);
+}
+
+
 function updateDocumentSettingsMenu()
 {
 	const settings = loadSavedSettings();
@@ -267,8 +305,9 @@ function updateDocumentSettingsMenu()
 
 	if(settings.textIndent === null) settings.textIndent = "0";
 	if(settings.fontSize === null) settings.fontSize = "0";
-	if(settings.customTextIndent === null) settings.customTextIndent = "20";
+	if(settings.customTextIndent === null) settings.customTextIndent = "25";
 	if(settings.customFontSize === null) settings.customFontSize = "14";
+	if(settings.align === null) settings.align = "0";
 
 	//Esconder o mostrar propiedades "custom"
 	if(settings.textIndent === "2")
@@ -299,5 +338,14 @@ function updateDocumentSettingsMenu()
 		default:
 		case "0": document.getElementById('docFontSize-Default').checked = true; break;
 		case "1": document.getElementById('docFontSize-Custom').checked = true; break;
+	}
+
+	switch(settings.align)
+	{
+		default:
+		case "0": document.getElementById('docAlign-Left').checked = true; break;
+		case "1": document.getElementById('docAlign-Center').checked = true; break;
+		case "2": document.getElementById('docAlign-Right').checked = true; break;
+		case "3": document.getElementById('docAlign-Justified').checked = true; break;
 	}
 }

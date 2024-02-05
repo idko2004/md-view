@@ -180,12 +180,14 @@
 					<div>
 						<h3>Text align</h3>
 						<form>
-							<input type="radio" name="docAlign" id="docAlign-Left" autocomplete="off">
+							<input type="radio" name="docAlign" id="docAlign-Left" autocomplete="off" onclick="setTextAlignSetting(0)">
 							<label for="docAlign-Left">Left</label>
-							<input type="radio" name="docAlign" id="docAlign-Center" autocomplete="off">
+							<input type="radio" name="docAlign" id="docAlign-Center" autocomplete="off" onclick="setTextAlignSetting(1)">
 							<label for="docAlign-Center">Center</label>
-							<input type="radio" name="docAlign" id="docAlign-Right" autocomplete="off">
+							<input type="radio" name="docAlign" id="docAlign-Right" autocomplete="off" onclick="setTextAlignSetting(2)">
 							<label for="docAlign-Right">Right</label>
+							<input type="radio" name="docAlign" id="docAlign-Justified" autocomplete="off" onclick="setTextAlignSetting(3)">
+							<label for="docAlign-Justified">Justified</label>
 						</form>
 					</div>
 				</div>
