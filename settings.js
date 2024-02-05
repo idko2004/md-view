@@ -43,10 +43,12 @@ setFontSizeBySavedSetting();
 //
 document.getElementById('changeFontBtn').addEventListener('click', () =>
 {
+	showSettings(false);
+
+	updateChangeFontMenu();
+
 	const menu = document.getElementById('changeFontMenu');
 	menu.hidden = !menu.hidden;
-
-	showSettings(false);
 });
 
 let docfontbtn = document.getElementsByClassName('docfontbtn');
@@ -60,7 +62,10 @@ for(let i = 0; i < docfontbtn.length; i++)
 		const font = event.target.getAttribute('ftn')
 		setDocumentFont(font);
 
-		localStorage.setItem('docfont', font);
+		loadSavedSettings().docfont = font;
+		saveSettings();
+
+		updateChangeFontMenu();
 	});
 }
 
@@ -71,7 +76,10 @@ for(let i = 0; i < codefontbtn.length; i++)
 		const font = event.target.getAttribute('ftn')
 		setCodeFont(font);
 
-		localStorage.setItem('codefont', font);
+		loadSavedSettings().codefont = font;
+		saveSettings();
+
+		updateChangeFontMenu();
 	});
 }
 
@@ -101,6 +109,30 @@ function setCodeFont(font)
 	root.style.setProperty('--code-font', fontName);
 
 	console.log('Code font set', fontName);
+}
+
+function updateChangeFontMenu()
+{
+	const currentDocfont = loadSavedSettings().docfont;
+	const currentCodefont = loadSavedSettings().codefont;
+	
+	for(let i = 0; i < docfontbtn.length; i++)
+	{
+		docfontbtn[i].classList.remove('underline');
+		if(docfontbtn[i].getAttribute('ftn') === currentDocfont)
+		{
+			docfontbtn[i].classList.add('underline');
+		}
+	}
+
+	for(let i = 0; i < codefontbtn.length; i++)
+	{
+		codefontbtn[i].classList.remove('underline');
+		if(codefontbtn[i].getAttribute('ftn') === currentCodefont)
+		{
+			codefontbtn[i].classList.add('underline');
+		}
+	}
 }
 
 //
