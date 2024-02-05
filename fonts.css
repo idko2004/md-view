@@ -113,6 +113,245 @@
 }
 
 /*
+	Rubik
+*/
+@font-face
+{
+	font-family: 'Rubik';
+	src: url('fonts/Rubik-VariableFont_wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Rubik';
+	src: url('fonts/Rubik-Italic-VariableFont_wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Archivo
+*/
+@font-face
+{
+	font-family: 'Archivo';
+	src: url('fonts/Archivo-VariableFont_wdth,wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Archivo';
+	src: url('fonts/Archivo-Italic-VariableFont_wdth,wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Red Hat Display
+*/
+@font-face
+{
+	font-family: 'Red Hat Display';
+	src: url('fonts/RedHatDisplay-VariableFont_wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Red Hat Display';
+	src: url('fonts/RedHatDisplay-Italic-VariableFont_wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Open Sans
+*/
+@font-face
+{
+	font-family: 'Open Sans';
+	src: url('fonts/OpenSans-VariableFont_wdth,wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Open Sans';
+	src: url('fonts/RedHatDisplay-Italic-VariableFont_wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Playfair
+*/
+@font-face
+{
+	font-family: 'Playfair';
+	src: url('fonts/Playfair-VariableFont_opsz,wdth,wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Playfair';
+	src: url('fonts/Playfair-Italic-VariableFont_opsz,wdth,wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Lora
+*/
+@font-face
+{
+	font-family: 'Lora';
+	src: url('fonts/Lora-VariableFont_wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Lora';
+	src: url('fonts/Lora-Italic-VariableFont_wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Libre Baskerville
+*/
+
+@font-face
+{
+	font-family: 'Libre Baskerville';
+	src: url('fonts/LibreBaskerville-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'Libre Baskerville';
+	src: url('fonts/LibreBaskerville-Italic.ttf');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face
+{
+	font-family: 'Libre Baskerville';
+	src: url('fonts/LibreBaskerville-Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/*
+	DM Serif Text
+*/
+@font-face
+{
+	font-family: 'DM Serif Text';
+	src: url('fonts/DMSerifText-Regular.ttf');
+	font-style: normal;
+}
+
+@font-face
+{
+	font-family: 'DM Serif Text';
+	src: url('fonts/DMSerifText-Italic.ttf');
+	font-style: italic;
+}
+
+/*
+	Old Standard TT
+*/
+@font-face
+{
+	font-family: 'Old Standard TT';
+	src: url('fonts/OldStandardTT-Regular.ttf');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face
+{
+	font-family: 'Old Standard TT';
+	src: url('fonts/OldStandardTT-Italic.ttf');
+	font-style: italic;
+	font-weight: normal;
+}
+
+@font-face
+{
+	font-family: 'Old Standard TT';
+	src: url('fonts/OldStandardTT-Bold.ttf');
+	font-style: normal;
+	font-weight: bold;
+}
+
+/*
+	Libre Caslon Text
+*/
+@font-face
+{
+	font-family: 'Libre Caslon Text';
+	src: url('fonts/LibreCaslonText-Regular.ttf');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face
+{
+	font-family: 'Libre Caslon Text';
+	src: url('fonts/LibreCaslonText-Italic.ttf');
+	font-style: italic;
+	font-weight: normal;
+}
+
+@font-face
+{
+	font-family: 'Libre Caslon Text';
+	src: url('fonts/LibreCaslonText-Bold.ttf');
+	font-style: normal;
+	font-weight: bold;
+}
+
+/*
+	Literata
+*/
+
+@font-face
+{
+	font-family: 'Literata';
+	src: url('fonts/Literata-VariableFont_opsz,wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Literata';
+	src: url('fonts/Literata-Italic-VariableFont_opsz,wght.ttf');
+	font-style: italic;
+}
+
+/*
+	Frank Ruhl Libre
+*/
+
+@font-face
+{
+	font-family: 'Frank Ruhl Libre';
+	src: url('fonts/FrankRuhlLibre-VariableFont_wght.ttf');
+}
+
+/*
+	Libre Bodoni
+*/
+
+@font-face
+{
+	font-family: 'Libre Bodoni';
+	src: url('fonts/LibreBodoni-VariableFont_wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Libre Bodoni';
+	src: url('fonts/LibreBodoni-Italic-VariableFont_wght.ttf');
+	font-style: italic;
+}
+
+/*
 	IBM Plex Mono
 */
 
@@ -225,4 +464,20 @@
 {
 	font-family: 'JetBrains Mono';
 	src: url('fonts/JetBrainsMono-VariableFont_wght.ttf');
+}
+
+/*
+	Roboto Mono
+*/
+@font-face
+{
+	font-family: 'Roboto Mono';
+	src: url('fonts/RobotoMono-VariableFont_wght.ttf');
+}
+
+@font-face
+{
+	font-family: 'Roboto Mono';
+	src: url('fonts/RobotoMono-Italic-VariableFont_wght.ttf');
+	font-style: italic;
 }

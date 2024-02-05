@@ -113,8 +113,14 @@ header .header-menu-font,
 .grid
 {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 50% 50%;
 	grid-template-rows: auto;
+}
+
+.grid > div
+{
+	margin: 0.2rem;
+	padding: 0.2rem;
 }
 
 .bigSquareButton
