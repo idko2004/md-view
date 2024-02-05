@@ -5,7 +5,7 @@ html
 	--document-font: serif;
 	--code-font: monospace;
 	--font-size: 1rem;
-	--indent: 20px;
+	--indent: 0;
 }
 
 body
@@ -157,8 +157,14 @@ input[type="radio"]:hover
 
 .viewer p
 {
-	font-size: var(--font-size);
 	text-indent: var(--indent);
+}
+
+.viewer p,
+.viewer li,
+.viewer .imgFootnote
+{
+	font-size: var(--font-size);
 }
 
 .codeblock
@@ -168,6 +174,7 @@ input[type="radio"]:hover
 	padding: 0.5rem;
 	border-radius: 0.5rem;
 	font-size: 1.1em;
+	text-indent: 0 !important;
 }
 
 .minicodeblock
@@ -193,7 +200,6 @@ img
 
 .imgFootnote
 {
-	font-size: 0.8rem;
 	font-style: italic;
 	color: #77767b;
 }
@@ -235,6 +241,13 @@ h6
 	text-decoration: underline;
 	text-decoration-color: #b5835a;
 }
+
+.viewer h1 {font-size: calc(var(--font-size) * 2);}
+.viewer h2 {font-size: calc(var(--font-size) * 1.5);}
+.viewer h3 {font-size: calc(var(--font-size) * 1.17);}
+.viewer h4 {font-size: var(--font-size);}
+.viewer h5 {font-size: calc(var(--font-size) * 0.83);}
+.viewer h6 {font-size: calc(var(--font-size) * 0.67);}
 
 li
 {

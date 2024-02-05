@@ -32,6 +32,12 @@ function saveSettings()
 	localStorage.setItem('size-custom', settingsState.customFontSize);
 }
 
+//cargar cosas automáticamente
+setDocumentFont(loadSavedSettings().docfont);
+setCodeFont(loadSavedSettings().codefont);
+setTextIndentBySavedSetting();
+setFontSizeBySavedSetting();
+
 //
 //	CHANGE FONT
 //
@@ -68,10 +74,6 @@ for(let i = 0; i < codefontbtn.length; i++)
 		localStorage.setItem('codefont', font);
 	});
 }
-
-//cargar fuente automáticamente
-setDocumentFont(loadSavedSettings().docfont);
-setCodeFont(loadSavedSettings().codefont);
 
 function setDocumentFont(font)
 {
@@ -119,6 +121,7 @@ function setTextIndentSetting(state)
 	settings.textIndent = state.toString();
 
 	saveSettings();
+	setTextIndentBySavedSetting();
 	updateDocumentSettingsMenu();
 }
 
@@ -136,8 +139,36 @@ function setCustomTextIndentSetting()
 	settings.customTextIndent = value.toString();
 
 	saveSettings();
+	setTextIndentBySavedSetting();
 	console.log('Custom text indent set', value);
 	updateDocumentSettingsMenu();
+}
+
+function setTextIndentBySavedSetting()
+{
+	switch(loadSavedSettings().textIndent)
+	{
+		default:
+		case "0": actuallySetTextIndent(null); break;
+		case "1": actuallySetTextIndent(20); break;
+		case "2": actuallySetTextIndent(loadSavedSettings().customTextIndent); break;
+	}
+}
+
+function actuallySetTextIndent(value)
+{
+	const root = document.getElementsByTagName("html")[0];
+
+	if(value === null) value = "0";
+	else
+	{
+		value = Number(value);
+		value = `${value}px`;
+	}
+
+	root.style.setProperty('--indent', value);
+
+	console.log('Indent set', value);
 }
 
 function setCustomFontSizeSetting()
@@ -154,6 +185,7 @@ function setCustomFontSizeSetting()
 	settings.customFontSize = value.toString();
 
 	saveSettings();
+	setFontSizeBySavedSetting();
 	console.log('Custom font size set', value);
 	updateDocumentSettingsMenu();
 }
@@ -165,7 +197,34 @@ function setFontSizeSetting(state)
 	settings.fontSize = state.toString();
 
 	saveSettings();
+	setFontSizeBySavedSetting();
 	updateDocumentSettingsMenu();
+}
+
+function setFontSizeBySavedSetting()
+{
+	switch(loadSavedSettings().fontSize)
+	{
+		default:
+		case "0": actuallySetFontSize(null); break;
+		case "1": actuallySetFontSize(loadSavedSettings().customFontSize); break;
+	}
+}
+
+function actuallySetFontSize(value)
+{
+	const root = document.getElementsByTagName("html")[0];
+
+	if(value === null) value = "1rem";
+	else
+	{
+		value = Number(value);
+		value = `${value}px`;
+	}
+
+	root.style.setProperty('--font-size', value);
+
+	console.log('Font size set', value);
 }
 
 function updateDocumentSettingsMenu()
@@ -176,7 +235,7 @@ function updateDocumentSettingsMenu()
 
 	if(settings.textIndent === null) settings.textIndent = "0";
 	if(settings.fontSize === null) settings.fontSize = "0";
-	if(settings.customTextIndent === null) settings.customTextIndent = "10";
+	if(settings.customTextIndent === null) settings.customTextIndent = "20";
 	if(settings.customFontSize === null) settings.customFontSize = "14";
 
 	//Esconder o mostrar propiedades "custom"
