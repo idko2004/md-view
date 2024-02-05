@@ -3,7 +3,8 @@ const msg = document.getElementById('msg');
 document.getElementById('filechooser').onchange = (e) =>
 {
 	msg.innerText = 'Doing things, please wait...';
-	document.getElementById('dialog').close();
+	hideNonPrintableElements(false);
+	document.getElementById('filechooser-container').hidden = true;
 	readFile(e.target.files[0]);
 }
 
@@ -28,7 +29,8 @@ dropzone.addEventListener('drop', (e) =>
 {
 	e.preventDefault();
 	msg.innerText = 'Doing things, please wait...';
-	document.getElementById('dialog').close();
+	hideNonPrintableElements(false);
+	document.getElementById('filechooser-container').hidden = true;
 	
 	let files = e.dataTransfer.files;
 	console.log(files);
@@ -51,5 +53,4 @@ dropzone.addEventListener('dragleave', (e) =>
 	e.target.classList.remove('drag');
 });
 
-document.getElementById('dialog').showModal();
-msg.innerText = "You just closed the thing, reload the page";
+hideNonPrintableElements(true);

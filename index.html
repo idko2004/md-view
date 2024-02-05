@@ -13,19 +13,22 @@
 	<script defer src="main.js"></script>
 </head>
 <body>
-	<div class="filechooser-container">
-		<dialog id="dialog">
-			<p><b>Markdown viewer</b></p>
+	<div id="filechooser-container" class="filechooser-container" align="center">
+		<h1>Md-View (Markdown Viewer)</h1>
+		<div class="imgFootnote">
+			View files with the .md extension
+		</div>
+		<div style="padding: 2rem;">
 			<div>
 				<div id="dropzone">
 					<i>Drop a file here</i>
 				</div>
 			</div>
-			<div>
-				or search for a file in your system
-			</div>
+			<p>
+				...or search for a file in your system
+			</p>
 			<input id="filechooser" type="file" accept=".md,.txt" autocomplete="off">
-		</dialog>
+		</div>
 	</div>
 	<header>
 		<div class="header">
@@ -194,7 +197,7 @@
 			</div>
 		</div>
 	</header>
-	<h1 id="msg">Did you disabled Javascript, or is your internet really that slow?</h1>
+	<h1 id="msg"></h1>
 	<div class="viewer" id="viewer"></div>
 </body>
 </html>
