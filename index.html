@@ -48,6 +48,11 @@
 				</div>
 				<h1>Settings</h1>
 				<div class="align-center">
+					<button class="bigSquareButton" id="changeColorthemeBtn">
+						<img src="img/paintbrush-svgrepo-com.svg">
+						<br>
+						Change color theme
+					</button>
 					<button class="bigSquareButton" id="changeFontBtn">
 						<img src="img/text-heading-svgrepo-com.svg">
 						<br>
@@ -132,6 +137,27 @@
 							<div><button class="codefontbtn" ftn="Frank Ruhl Libre">Frank Ruhl Libre</button></div>
 							<div><button class="codefontbtn" ftn="Libre Bodoni">Libre Bodoni</button></div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div id="colorthemeMenu" hidden>
+				<div class="align-right">
+					<button onclick="showSettings(true); document.getElementById('colorthemeMenu').hidden = true;">
+						<img src="img/chevron-left-large-svgrepo-com.svg" alt="Back" title="Go back">
+					</button>
+					<button onclick="showSettings(false); document.getElementById('colorthemeMenu').hidden = true;">
+						<img src="img/close-clean-svgrepo-com.svg" alt="Close" title="Close">
+					</button>
+				</div>
+				<h1>Change colortheme</h1>
+				<div class="align-center">
+					<h3>Light themes</h3>
+					<div class="fontlist">
+						<div><button class="align-center themebtn" theme="0">Colorful</button></div>
+					</div>
+					<h3>Dark themes</h3>
+					<div class="fontlist">
+						<div><button class="align-center themebtn" theme="1">Colorful dark</button></div>
 					</div>
 				</div>
 			</div>

@@ -17,7 +17,8 @@ function loadSavedSettings()
 		fontSize: localStorage.getItem('size'),
 		customTextIndent: localStorage.getItem('indent-custom'),
 		customFontSize: localStorage.getItem('size-custom'),
-		align: localStorage.getItem('align')
+		align: localStorage.getItem('align'),
+		theme: localStorage.getItem('theme')
 	}
 
 	return settingsState;
@@ -32,14 +33,19 @@ function saveSettings()
 	localStorage.setItem('indent-custom', settingsState.customTextIndent);
 	localStorage.setItem('size-custom', settingsState.customFontSize);
 	localStorage.setItem('align', settingsState.align);
+	localStorage.setItem('theme', settingsState.theme);
 }
 
 //cargar cosas automáticamente
-setDocumentFont(loadSavedSettings().docfont);
-setCodeFont(loadSavedSettings().codefont);
-setTextIndentBySavedSetting();
-setFontSizeBySavedSetting();
-setTextAlignBySavedSetting();
+function setThingsAutomatically()
+{
+	setDocumentFont(loadSavedSettings().docfont);
+	setCodeFont(loadSavedSettings().codefont);
+	setTextIndentBySavedSetting();
+	setFontSizeBySavedSetting();
+	setTextAlignBySavedSetting();
+	setTheme(loadSavedSettings().theme);
+}
 
 //
 //	CHANGE FONT
@@ -349,3 +355,104 @@ function updateDocumentSettingsMenu()
 		case "3": document.getElementById('docAlign-Justified').checked = true; break;
 	}
 }
+
+//
+//	CHANGE COLORTHEME
+//
+
+const colorthemes =
+{
+	0: //Colorful
+	{
+		bgColor: 'fff',
+		textColor: '000',
+		h1Color: '62a0ea',
+		h2Color: '57e389',
+		h3Color: 'c061cb',
+		h4Color: 'ffa348',
+		h5Color: 'ed333b',
+		h6Color: 'b5835a',
+		codeBg: 'c9dffc',
+		commentColor: '77767b'
+	},
+
+	1: //Colorful dark
+	{
+		bgColor: '000',
+		textColor: 'fff',
+		h1Color: '62a0ea',
+		h2Color: '57e389',
+		h3Color: 'c061cb',
+		h4Color: 'ffa348',
+		h5Color: 'ed333b',
+		h6Color: 'b5835a',
+		codeBg: '063169',
+		commentColor: 'c1c1c3'
+	}
+}
+
+document.getElementById('changeColorthemeBtn').addEventListener('click', () =>
+{
+	showSettings(false);
+	document.getElementById('colorthemeMenu').hidden = false;
+});
+
+//Añadir events listeners a los botones para cambiar los temas
+const themebtn = document.getElementsByClassName('themebtn');
+
+for(let i = 0; i < themebtn.length; i++)
+{
+	themebtn[i].addEventListener('click', (e) =>
+	{
+		const theme = event.target.getAttribute('theme')
+		setTheme(theme);
+
+		loadSavedSettings().theme = theme;
+		saveSettings();
+
+		updateChangeColorthemeMenu();
+	});
+}
+
+function setTheme(i)
+{
+	if(i == null) return;
+	const root = document.getElementsByTagName("html")[0];
+
+	const theme = colorthemes[i];
+	if(theme === undefined)
+	{
+		console.error(`${i} no contiene un tema válido`);
+		return;
+	}
+
+	root.style.setProperty('--bg-color', `#${theme.bgColor}`);
+	root.style.setProperty('--text-color', `#${theme.textColor}`);
+	root.style.setProperty('--h1-color', `#${theme.h1Color}`);
+	root.style.setProperty('--h2-color', `#${theme.h2Color}`);
+	root.style.setProperty('--h3-color', `#${theme.h3Color}`);
+	root.style.setProperty('--h4-color', `#${theme.h4Color}`);
+	root.style.setProperty('--h5-color', `#${theme.h5Color}`);
+	root.style.setProperty('--h6-color', `#${theme.h6Color}`);
+	root.style.setProperty('--code-bg', `#${theme.codeBg}`);
+	root.style.setProperty('--comment-color', `#${theme.commentColor}`);
+
+	console.log('Colortheme set', i);
+}
+
+function updateChangeColorthemeMenu()
+{
+	const currentTheme = loadSavedSettings().theme;
+
+	for(let i = 0; i < themebtn.length; i++)
+	{
+		themebtn[i].classList.remove('underline');
+		if(themebtn[i].getAttribute('theme') === currentTheme)
+		{
+			themebtn[i].classList.add('underline');
+		}
+	}
+}
+
+setThingsAutomatically();
+
