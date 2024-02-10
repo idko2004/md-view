@@ -175,13 +175,19 @@ input[type="radio"]:hover
 
 .viewer
 {
-	max-width: 80ch;
 	width: 100%;
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
 	font-family: var(--document-font);
+	font-size: var(--font-size);
+	line-height: calc(var(--font-size) * 1.8);
 	padding-bottom: 5rem;
+}
+
+.limit-width /*Para que el viewer no ocupe toda la pantalla horizontalmente, quitar esta clase para imprimir*/
+{
+	max-width: 80ch;
 }
 
 .titleContainer
@@ -195,27 +201,20 @@ input[type="radio"]:hover
 	text-indent: var(--indent);
 }
 
-.viewer p,
-.viewer li,
-.viewer .imgFootnote
-{
-	font-size: var(--font-size);
-}
-
 .codeblock
 {
 	background-color: var(--code-bg);
 	font-family: var(--code-font);
 	padding: 0.5rem;
 	border-radius: 0.5rem;
-	font-size: 1.1em;
+	font-size: calc(var(--font-size) * 1.1);
 	text-indent: 0 !important;
 }
 
 .minicodeblock
 {
 	font-family: var(--code-font);
-	font-size: 1.1em;
+	font-size: calc(var(--font-size) * 1.1);
 	background-color: var(--code-bg);
 	padding: 0.2em;
 	margin: 0.2em;
@@ -244,6 +243,11 @@ p
 	color: var(--text-color);
 }
 
+/*
+Algunos estilos de los títulos se definen aparte del viewer porque se usan para algunos menús,
+y hay algunas propiedades que no queremos que se apliquen a los títulos en los menús,
+como pueden ser algunas de las configuraciones
+*/
 h1
 {
 	text-decoration: underline;
@@ -288,12 +292,42 @@ h6
 	color: var(--text-color);
 }
 
-.viewer h1 {font-size: calc(var(--font-size) * 2);}
-.viewer h2 {font-size: calc(var(--font-size) * 1.5);}
-.viewer h3 {font-size: calc(var(--font-size) * 1.17);}
-.viewer h4 {font-size: var(--font-size);}
-.viewer h5 {font-size: calc(var(--font-size) * 0.83);}
-.viewer h6 {font-size: calc(var(--font-size) * 0.67);}
+.viewer h1
+{
+	font-size: calc(var(--font-size) * 2);
+	line-height: calc(1em * 1.8);
+}
+
+.viewer h2
+{
+	font-size: calc(var(--font-size) * 1.5);
+	line-height: calc(1em * 1.8);
+}
+
+.viewer h3
+{
+	font-size: calc(var(--font-size) * 1.17);
+	line-height: calc(1em * 1.8);
+}
+
+.viewer h4
+{
+	font-size: var(--font-size);
+	line-height: calc(1em * 1.8);
+}
+
+.viewer h5
+{
+	font-size: calc(var(--font-size) * 0.83);
+	line-height: calc(1em * 1.8);
+}
+
+.viewer h6
+{
+	font-size: calc(var(--font-size) * 0.67);
+	line-height: calc(1em * 1.8);
+}
+
 
 li
 {
