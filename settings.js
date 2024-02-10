@@ -379,6 +379,20 @@ const colorthemes =
 	1: //Colorful dark
 	{
 		bgColor: '000',
+		textColor: 'fafafa',
+		h1Color: '62a0ea',
+		h2Color: '57e389',
+		h3Color: 'c061cb',
+		h4Color: 'ffa348',
+		h5Color: 'ed333b',
+		h6Color: 'b5835a',
+		codeBg: '063169',
+		commentColor: 'c1c1c3'
+	},
+
+	2: //Colorful but not so dark
+	{
+		bgColor: '241f31',
 		textColor: 'fff',
 		h1Color: '62a0ea',
 		h2Color: '57e389',
@@ -388,6 +402,90 @@ const colorthemes =
 		h6Color: 'b5835a',
 		codeBg: '063169',
 		commentColor: 'c1c1c3'
+	},
+
+	3: //Colorful warm
+	{
+		bgColor: 'fffbf6',//'fff5e8',
+		textColor: '000',
+		h1Color: '62a0ea',
+		h2Color: '57e389',
+		h3Color: 'c061cb',
+		h4Color: 'ffa348',
+		h5Color: 'ed333b',
+		h6Color: 'b5835a',
+		codeBg: 'c9dffc',
+		commentColor: '77767b'
+	},
+
+	4: //Colorful warmer
+	{
+		bgColor: 'fff5e8',
+		textColor: '000',
+		h1Color: '62a0ea',
+		h2Color: '57e389',
+		h3Color: 'c061cb',
+		h4Color: 'ffa348',
+		h5Color: 'ed333b',
+		h6Color: 'b5835a',
+		codeBg: 'c9dffc',
+		commentColor: '77767b'
+	},
+
+	5: //No named blueish palette
+	{
+		bgColor: 'eff5fd',
+		textColor: '000',
+		h1Color: '99c1f1',
+		h2Color: '99aff0',
+		h3Color: 'a699f0',
+		h4Color: 'db99f0',
+		h5Color: 'ed333b',
+		h6Color: 'f099c0',
+		codeBg: 'f0c999',
+		commentColor: '1c71d8'
+	},
+
+	6: //Constant blue, light
+	{
+		bgColor: 'fff',
+		textColor: '000',
+		h1Color: '3584e4',
+		h2Color: '3584e4',
+		h3Color: '3584e4',
+		h4Color: '3584e4',
+		h5Color: '3584e4',
+		h6Color: '3584e4',
+		codeBg: 'f6f5f4',
+		commentColor: '77767b'
+	},
+
+	7: //Variable blue, light
+	{
+		bgColor: 'fff',
+		textColor: '000',
+		h1Color: '99c1f1',
+		h2Color: '62a0ea',
+		h3Color: '3584e4',
+		h4Color: '1c71d8',
+		h5Color: '1a5fb4',
+		h6Color: '175bb1',
+		codeBg: 'c9dffc',
+		commentColor: '77767b'
+	},
+
+	8: //Weird
+	{
+		bgColor: 'f7f2fc',
+		textColor: '000',
+		h1Color: 'd13389',
+		h2Color: '7a33d1',
+		h3Color: '336ad1',
+		h4Color: '33c9d1',
+		h5Color: '336ad1',
+		h6Color: '33d17a',
+		codeBg: 'adedca',
+		commentColor: '7a33d1'
 	}
 }
 
