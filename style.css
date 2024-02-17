@@ -328,6 +328,12 @@ h6
 	line-height: calc(1em * 1.8);
 }
 
+a
+{
+	color: var(--h1-color);
+	text-decoration: underline;
+	font-weight: bold;
+}
 
 li
 {

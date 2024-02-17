@@ -362,6 +362,7 @@ function searchInline()
 		while(searchBoldInline(textblocks[i]));
 		while(searchItalicInline(textblocks[i]));
 		while(searchCodeblockInline(textblocks[i]));
+		while(searchLinksInline(textblocks[i]));
 	}
 }
 
@@ -448,6 +449,47 @@ function searchCodeblockInline(element)
 	console.log('minicodeblock:', codeText);
 
 	element.innerHTML = `${startText}<span class="minicodeblock">${codeText}</span>${endText}`;
+
+	return true;
+}
+
+function searchLinksInline(element)
+{
+	let text = element.innerHTML;
+
+	let indexLeftBracket = text.indexOf('[');
+	if(indexLeftBracket === -1) return false;
+
+	let indexRightBracket = text.indexOf(']');
+	if(indexRightBracket === -1) return false;
+
+	let indexLeftParenthesis = text.indexOf('(');
+	if(indexLeftParenthesis === -1) return false;
+
+	let indexRightParenthesis = text.indexOf(')');
+	if(indexRightParenthesis === -1) return false;
+
+	//Si está al revés
+	if(indexLeftBracket > indexLeftParenthesis) return false; //( [
+	if(indexRightBracket > indexRightParenthesis) return false; // ) ]
+	if(indexLeftBracket > indexRightBracket) return false; // ][
+	if(indexLeftParenthesis > indexRightParenthesis) return false; // )(
+
+	//Get everything before the left bracket
+	let before = text.slice(0, indexLeftBracket);
+
+	//Get the text
+	let name = text.slice(indexLeftBracket + 1, indexRightBracket);
+
+	//Get the url
+	let url = text.slice(indexLeftParenthesis + 1, indexRightParenthesis);
+
+	//get everything after the right bracket
+	let after = text.slice(indexRightParenthesis + 1);
+
+	console.log('link:', {before, name, url, after, element});
+
+	element.innerHTML = `${before}<a target="_blank" href="${url}">${name}</a>${after}`;
 
 	return true;
 }
