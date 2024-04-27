@@ -419,7 +419,7 @@ function searchItalicInline(element)
 
 	console.log('italic:', italicText);
 
-	element.innerHTML = `${startText}<b>${italicText}</b>${endText}`;
+	element.innerHTML = `${startText}<i>${italicText}</i>${endText}`;
 
 	return true;
 }
