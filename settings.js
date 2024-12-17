@@ -11,14 +11,14 @@ function loadSavedSettings()
 {
 	if(settingsState === undefined) settingsState =
 	{
-		docfont: localStorage.getItem('docfont'),
-		codefont: localStorage.getItem('codefont'),
-		textIndent: localStorage.getItem('indent'),
-		fontSize: localStorage.getItem('size'),
-		customTextIndent: localStorage.getItem('indent-custom'),
-		customFontSize: localStorage.getItem('size-custom'),
-		align: localStorage.getItem('align'),
-		theme: localStorage.getItem('theme')
+		docfont: localStorage.getItem('mdview_docfont'),
+		codefont: localStorage.getItem('mdview_codefont'),
+		textIndent: localStorage.getItem('mdview_indent'),
+		fontSize: localStorage.getItem('mdview_size'),
+		customTextIndent: localStorage.getItem('mdview_indent-custom'),
+		customFontSize: localStorage.getItem('mdview_size-custom'),
+		align: localStorage.getItem('mdview_align'),
+		theme: localStorage.getItem('mdview_theme')
 	}
 
 	return settingsState;
@@ -26,14 +26,14 @@ function loadSavedSettings()
 
 function saveSettings()
 {
-	localStorage.setItem('docfont', settingsState.docfont);
-	localStorage.setItem('codefont', settingsState.codefont);
-	localStorage.setItem('indent', settingsState.textIndent);
-	localStorage.setItem('size', settingsState.fontSize);
-	localStorage.setItem('indent-custom', settingsState.customTextIndent);
-	localStorage.setItem('size-custom', settingsState.customFontSize);
-	localStorage.setItem('align', settingsState.align);
-	localStorage.setItem('theme', settingsState.theme);
+	localStorage.setItem('mdview_docfont', settingsState.docfont);
+	localStorage.setItem('mdview_codefont', settingsState.codefont);
+	localStorage.setItem('mdview_indent', settingsState.textIndent);
+	localStorage.setItem('mdview_size', settingsState.fontSize);
+	localStorage.setItem('mdview_indent-custom', settingsState.customTextIndent);
+	localStorage.setItem('mdview_size-custom', settingsState.customFontSize);
+	localStorage.setItem('mdview_align', settingsState.align);
+	localStorage.setItem('mdview_theme', settingsState.theme);
 }
 
 //cargar cosas automáticamente
