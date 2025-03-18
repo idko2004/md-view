@@ -5,7 +5,8 @@ const textNodeTypes =
 	comment: 2,
 	title: 3,
 	image: 4,
-	list: 5
+	list: 5,
+	table: 6,
 }
 
 const lastTextNode =
@@ -88,6 +89,10 @@ function checkLine(line)
 	else if(line.startsWith('```'))
 	{
 		searchForCodeblocks();
+	}
+	else if(line.startsWith('| '))
+	{
+		searchForTables(line);
 	}
 	else if(line.startsWith('    '))
 	{
@@ -262,6 +267,68 @@ function searchForComments(line)
 	lastTextNode.type = textNodeTypes.comment;
 
 	container.appendChild(comment);
+}
+
+function searchForTables(line)
+{
+	if(lastTextNode.type != textNodeTypes.table)
+	{
+		lastTextNode.e = addToDocument('table');
+		lastTextNode.type = textNodeTypes.table;
+	}
+
+	let tableHead = checkForHead(lastTextNode.e);
+	let tableBody = checkForBody(lastTextNode.e);
+
+	if(tableHead == undefined)
+	{
+		let headElement = document.createElement('thead');
+		lastTextNode.e.appendChild(headElement);
+		tableHead = headElement;
+	}
+
+	let columns = line.split('|');
+
+	let row = document.createElement('tr');
+	if(tableBody != undefined) tableBody.appendChild(row);
+	else tableHead.appendChild(row);
+
+	for(let i = 0; i < columns.length; i++)
+	{
+		if(columns[i].trim() === '') continue;
+
+		if(columns[i].trim().slice(0, 3) === '---')
+		{
+			//Create a table body
+			let bodyElement = document.createElement('tbody');
+			lastTextNode.e.appendChild(bodyElement);
+			return;
+		}
+
+		let td = document.createElement('td');
+		td.innerText = columns[i].trim();
+		row.appendChild(td);
+	}
+
+	function checkForHead(tableElement)
+	{
+		let children = tableElement.children;
+		for(let i = 0; i < children.length; i++)
+		{
+			if(children[i].tagName == "THEAD") return children[i];
+		}
+		return undefined;
+	}
+
+	function checkForBody(tableElement)
+	{
+		let children = tableElement.children;
+		for(let i = 0; i < children.length; i++)
+		{
+			if(children[i].tagName == "TBODY") return children[i];
+		}
+		return undefined;
+	}
 }
 
 function normalText(line)
